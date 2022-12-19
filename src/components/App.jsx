@@ -5,6 +5,7 @@ import Searchbar from 'components/Searchbar/Searchbar';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
 // import Button from './Button/Button';
 import api from './service/api';
+import css from '../styles.css';
 
 export class App extends Component {
   state = {
@@ -52,15 +53,7 @@ export class App extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'left',
-          fontSize: 50,
-          color: '#010101',
-        }}
-      >
+      <div className={css.App}>
         <header>
           <Searchbar onSubmit={this.inputSubmitHandler} />
         </header>
