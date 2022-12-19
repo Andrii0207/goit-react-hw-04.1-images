@@ -3,7 +3,7 @@ import Notiflix from 'notiflix';
 // import axios from 'axios';
 import Searchbar from 'components/Searchbar/Searchbar';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
-// import Button from './Button/Button';
+import Button from './Button/Button';
 import api from './service/api';
 import css from '../styles.css';
 
@@ -13,11 +13,14 @@ export class App extends Component {
     images: [],
     page: 1,
     isLoading: false,
-    showButton: false,
   };
 
   inputSubmitHandler = imageSearchName => {
-    this.setState({ imageSearchName });
+    this.setState({
+      imageSearchName,
+      page: 1,
+      images: [],
+    });
   };
 
   componentDidUpdate(_, prevState) {
@@ -51,14 +54,30 @@ export class App extends Component {
     }
   }
 
+  loadMore = () => {
+    this.setState(prevState => ({
+      page: prevState.page + 1,
+    }));
+  };
+
   render() {
+    const { images } = this.state;
+
     return (
-      <div className={css.App}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr',
+          gridGap: '16px',
+          paddingBottom: '24px',
+        }}
+      >
         <header>
           <Searchbar onSubmit={this.inputSubmitHandler} />
         </header>
         <main>
-          <ImageGallery images={this.state.images} />
+          <ImageGallery images={images} />
+          {images.length % 12 === 0 && images.length !== 0 && <Button onClick={this.loadMore} />}
         </main>
         <footer></footer>
       </div>
