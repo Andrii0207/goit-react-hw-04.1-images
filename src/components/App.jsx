@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Notiflix from 'notiflix';
+import axios from 'axios';
 import Searchbar from './Searchbar/Searchbar';
 // import ImageGallery from './ImageGallery/ImageGallery';
 // import Button from './Button/Button';
@@ -20,20 +21,43 @@ export class App extends Component {
 
   componentDidUpdate(_, prevState) {
     const { imageSearchName, page } = this.state;
-
     if (
       prevState.imageSearchName !== this.state.imageSearchName ||
       prevState.page !== this.state.page
     ) {
       this.setState({ isLoading: true });
       api(imageSearchName, page).then(resp => {
-        resp.hits.length === 0 && Notiflix.Notify.info('Sorry, we have no found any images');
+        resp.hits.length === 0 &&
+          Notiflix.Notify.info('Sorry, we have no found any images. Try something else');
       });
+
+      // resp.hits.length === 0
+      //   ? Notiflix.Notify.info('Sorry, we have no found any images. Try something else')
+      //   : this.setState(prevState => ({
+      //       images: [...prevState.images],
+      //     }));
+      // Notiflix.Notify.info('Sorry, we have no found any images. Try something else')
+
       console.log('Обновился компонент');
-      console.log('prevState.imageSearchName', prevState.imageSearchName);
-      console.log('this.state.imageSearchName', this.state.imageSearchName);
     }
   }
+
+  // queryImages = async () => {
+  //   const { imageSearchName, page } = this.state;
+
+  //   try {
+  //     this.setState({ isLoading: true });
+  //     api(imageSearchName, page).then(resp => console.log(resp));
+
+  //     // resp.hits.length === 0
+  //     //   ? Notiflix.Notify.info('Sorry, we have no found any images. Try something else')
+  //     //   : this.setState(prevState => ({
+  //     //       images: [...prevState.images],
+  //     //     }));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   render() {
     return (
