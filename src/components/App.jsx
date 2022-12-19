@@ -1,8 +1,8 @@
 import { Component } from 'react';
 import Notiflix from 'notiflix';
 // import axios from 'axios';
-import Searchbar from './Searchbar/Searchbar';
-import ImageGallery from './ImageGallery/ImageGallery';
+import Searchbar from 'components/Searchbar/Searchbar';
+import ImageGallery from 'components/ImageGallery/ImageGallery';
 // import Button from './Button/Button';
 import api from './service/api';
 
@@ -56,7 +56,7 @@ export class App extends Component {
         style={{
           height: '100vh',
           display: 'flex',
-          justifyContent: 'center',
+          justifyContent: 'left',
           fontSize: 50,
           color: '#010101',
         }}
