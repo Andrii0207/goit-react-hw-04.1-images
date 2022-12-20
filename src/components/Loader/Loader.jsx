@@ -13,7 +13,7 @@ function Loader() {
         left: '50%',
         position: 'absolute',
       }}
-      wrapperClass="blocksWrapper"
+      //   wrapperClass="blocksWrapper"
       colors={['#b8c480', '#B2A3B5', '#F4442E', '#51E5FF', '#429EA6']}
     />
   );

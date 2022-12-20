@@ -4,7 +4,7 @@ import css from './ImageGallery.module.css';
 
 function ImageGallery({ images, onSelect }) {
   return (
-    <ul class={css.ImageGallery}>
+    <ul className={css.ImageGallery}>
       {images.map(image => {
         return (
           <li key={image.id} className={css.ImageGalleryItem}>

@@ -32,7 +32,7 @@ class Searchbar extends Component {
   render() {
     return (
       <header className={css.Searchbar}>
-        <form class={css.SearchForm} onSubmit={this.handleSubmit}>
+        <form className={css.SearchForm} onSubmit={this.handleSubmit}>
           <button type="submit" className={css.SearchFormButton}>
             <BsSearch
               style={{
@@ -40,13 +40,13 @@ class Searchbar extends Component {
                 height: '20px',
               }}
             />
-            <span class={css.SearchFormButtonLabel}>Search</span>
+            <span className={css.SearchFormButtonLabel}>Search</span>
           </button>
           <input
-            class={css.SearchFormInput}
+            className={css.SearchFormInput}
             type="text"
-            autocomplete="off"
-            autofocus
+            autoComplete="off"
+            autoFocus
             placeholder="Search images and photos"
             value={this.state.imageSearchName}
             onChange={this.handleInputNameImg}
