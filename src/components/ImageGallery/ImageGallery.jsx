@@ -2,13 +2,13 @@ import React from 'react';
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import css from './ImageGallery.module.css';
 
-function ImageGallery({ images }) {
+function ImageGallery({ images, onSelect }) {
   return (
     <ul class={css.ImageGallery}>
       {images.map(image => {
         return (
           <li key={image.id} class={css.ImageGalleryItem}>
-            <ImageGalleryItem image={image} />
+            <ImageGalleryItem image={image} onSelect={onSelect} />
           </li>
         );
       })}

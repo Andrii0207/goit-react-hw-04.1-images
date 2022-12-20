@@ -4,15 +4,17 @@ import Notiflix from 'notiflix';
 import Searchbar from 'components/Searchbar/Searchbar';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
 import Button from './Button/Button';
+import Modal from 'components/Modal/Modal';
 import api from './service/api';
-import css from '../styles.css';
 
 export class App extends Component {
   state = {
     imageSearchName: '',
     images: [],
     page: 1,
+    selectedImage: null,
     isLoading: false,
+    showModal: false,
   };
 
   inputSubmitHandler = imageSearchName => {
@@ -20,6 +22,7 @@ export class App extends Component {
       imageSearchName,
       page: 1,
       images: [],
+      selectImage: false,
     });
   };
 
@@ -54,6 +57,14 @@ export class App extends Component {
     }
   }
 
+  clickImage = largeImageURL => {
+    this.setState({ selectedImage: largeImageURL });
+  };
+
+  closeModal = () => {
+    this.setState({ selectedImage: null });
+  };
+
   loadMore = () => {
     this.setState(prevState => ({
       page: prevState.page + 1,
@@ -61,7 +72,7 @@ export class App extends Component {
   };
 
   render() {
-    const { images } = this.state;
+    const { images, selectedImage } = this.state;
 
     return (
       <div
@@ -76,10 +87,16 @@ export class App extends Component {
           <Searchbar onSubmit={this.inputSubmitHandler} />
         </header>
         <main>
-          <ImageGallery images={images} />
+          <ImageGallery images={images} onSelect={this.clickImage} />
           {images.length % 12 === 0 && images.length !== 0 && <Button onClick={this.loadMore} />}
         </main>
-        <footer></footer>
+        <footer>
+          {selectedImage !== null && (
+            <Modal closeModal={this.closeModal} url={selectedImage}>
+              <img src={selectedImage} alt={selectedImage} />
+            </Modal>
+          )}
+        </footer>
       </div>
     );
   }
