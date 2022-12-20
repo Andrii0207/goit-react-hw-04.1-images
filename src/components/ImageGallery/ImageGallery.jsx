@@ -7,7 +7,7 @@ function ImageGallery({ images, onSelect }) {
     <ul class={css.ImageGallery}>
       {images.map(image => {
         return (
-          <li key={image.id} class={css.ImageGalleryItem}>
+          <li key={image.id} className={css.ImageGalleryItem}>
             <ImageGalleryItem image={image} onSelect={onSelect} />
           </li>
         );

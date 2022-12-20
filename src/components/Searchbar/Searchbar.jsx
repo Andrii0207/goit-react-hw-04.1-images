@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Notiflix from 'notiflix';
+import { BsSearch } from 'react-icons/bs';
 import css from './Searchbar.module.css';
 
 class Searchbar extends Component {
@@ -32,7 +33,13 @@ class Searchbar extends Component {
     return (
       <header className={css.Searchbar}>
         <form class={css.SearchForm} onSubmit={this.handleSubmit}>
-          <button type="submit" class={css.SearchFormButton}>
+          <button type="submit" className={css.SearchFormButton}>
+            <BsSearch
+              style={{
+                width: '20px',
+                height: '20px',
+              }}
+            />
             <span class={css.SearchFormButtonLabel}>Search</span>
           </button>
           <input
