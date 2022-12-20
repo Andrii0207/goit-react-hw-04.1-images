@@ -6,6 +6,7 @@ import ImageGallery from 'components/ImageGallery/ImageGallery';
 import Button from './Button/Button';
 import Modal from 'components/Modal/Modal';
 import api from './service/api';
+import Loader from './Loader/Loader';
 
 export class App extends Component {
   state = {
@@ -72,7 +73,7 @@ export class App extends Component {
   };
 
   render() {
-    const { images, selectedImage } = this.state;
+    const { images, selectedImage, isLoading } = this.state;
 
     return (
       <div
@@ -87,7 +88,11 @@ export class App extends Component {
           <Searchbar onSubmit={this.inputSubmitHandler} />
         </header>
         <main>
-          <ImageGallery images={images} onSelect={this.clickImage} />
+          {isLoading && images.length === 0 ? (
+            <Loader />
+          ) : (
+            <ImageGallery images={images} onSelect={this.clickImage} />
+          )}
           {images.length % 12 === 0 && images.length !== 0 && <Button onClick={this.loadMore} />}
         </main>
         <footer>
