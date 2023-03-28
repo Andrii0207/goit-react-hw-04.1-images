@@ -34,7 +34,7 @@ export const App = () => {
 
         response.hits.length === 0
           ? Notiflix.Notify.info(
-              'Sorry, we have found no images. Try something else'
+              'Sorry, we found any images. Try something else'
             )
           : setImages(prevState => [...prevState, ...response.hits]);
       } catch (error) {
