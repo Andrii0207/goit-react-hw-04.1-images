@@ -6,11 +6,11 @@ async function searchImage(value, page = 1) {
 
   try {
     const responce = await axios.get(
-      `${BASE_URL}?q=${value}&page=${page}&key=${KEY}&image_type=photo&orientation=horizontal&per_page=12`,
+      `${BASE_URL}?q=${value}&page=${page}&key=${KEY}&image_type=photo&orientation=horizontal&per_page=12`
     );
     return responce.data;
   } catch (error) {
-    console.log(error);
+    console.log('error', error);
   }
 }
 

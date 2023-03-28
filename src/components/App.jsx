@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Notiflix from 'notiflix';
-// import axios from 'axios';
 import Searchbar from 'components/Searchbar/Searchbar';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
 import Button from './Button/Button';
@@ -14,16 +13,19 @@ export const App = () => {
   const [page, setPage] = useState(1);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  // const [showModal, setShowModal] = useState(false);
 
   const inputSubmitHandler = imageSearchName => {
     setImageSearchName(imageSearchName);
     setPage(1);
     setImages([]);
-    setSelectedImage(false);
+    setSelectedImage(null);
   };
 
   useEffect(() => {
+    if (!imageSearchName) {
+      return;
+    }
+
     async function searchImages() {
       try {
         setIsLoading(true);

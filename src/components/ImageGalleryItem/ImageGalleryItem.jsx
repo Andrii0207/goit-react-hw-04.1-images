@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from './ImageGalleryItem.module.css';
 
-function ImageGalleryItem({ image: { tags, webformatURL, largeImageURL }, onSelect }) {
+function ImageGalleryItem({
+  image: { tags, webformatURL, largeImageURL },
+  onSelect,
+}) {
   return (
     <>
       <img
